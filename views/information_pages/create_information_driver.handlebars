@@ -1,0 +1,105 @@
+<div style="margin-left: 200px; margin-right: 200px; font-size: 13px">
+    <br>
+    <h2>Add New Driver</h2>
+    <br>
+    <h4>Create</h4>
+    <br>
+
+    {{!-- On One Line Form- --}}
+    <div class="formDiv">
+
+        <form id="createplan">
+            <div class="form-group-sm row">
+                <div class="col-sm">
+                    <label for="ex1">NO</label>
+                    <input class="form-control form-control-sm" placeholder="NO" name="NO" id="NO" maxlength="45"
+                        required style="width: 200px">
+                    <br>
+                    <label for="ex2">Name</label>
+                    <input class="form-control form-control-sm" placeholder="Name" name="Name" id="Name" maxlength="45"
+                        required style="width: 200px">
+                    <br>
+                    <label for="ex1">License ID</label>
+                    <input class="form-control form-control-sm" placeholder="licenseId" name="licenseId" id="licenseId"
+                        maxlength="45" required style="width: 200px">
+                    <br>
+                    <label for="ex2">RFC</label>
+                    <input class="form-control form-control-sm" placeholder="RFC" name="RFC" id="RFC" maxlength="45"
+                        required style="width: 200px">
+                    <br>
+                    <label for="ex2">IFE</label>
+                    <input class="form-control form-control-sm" placeholder="IFE" name="IFE" id="IFE" maxlength="45"
+                        required style="width: 200px">
+                    <br>
+                    <label for="ex2">Address</label>
+                    <input class="form-control form-control-sm" placeholder="Address" name="Address" id="Address"
+                        maxlength="45" required style="width: 200px">
+                    <br>
+
+
+                    {{!-- select from DB --}}
+                    {{!-- <label for="ex3">Status</label>
+          <select class="form-control form-control-sm" name="Status_" id="Status_" required
+            style="text-transform: uppercase">
+            <option value="" disabled selected>Choose...</option>
+                {{#each b_division}}
+            <option value="{{this.div_code}}">{{this.div_code}}</option>
+                {{/each}}
+            <option>Pending</option>
+          </select>
+          <br> --}}
+
+                    {{!-- <label for="ex2">Name</label>
+          <input class="form-control form-control-sm" placeholder="Name" name="Name" id="Name" maxlength="45" required
+            style="text-transform: uppercase; width: 100px">
+          <br> --}}
+                    <button type="submit" class="btn btn-secondary btn-sm" style="margin-top: 25px">Save</button>
+                </div>
+
+            </div>
+        </form>
+        <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
+            onclick="window.history.back()">Cancel</button>
+        {{!-- <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
+        onclick="window.location.href='/master_division'">Cancel</button> --}}
+        <br>
+
+    </div>
+
+</div>
+<br>
+
+<script type="text/javascript">
+
+
+    $("#createplan").on("submit", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+
+        var newPlan = {
+            information_driver_no: $("#NO").val().trim(),
+            information_driver_name: $("#Name").val().trim(),
+            information_driver_license_id: $("#licenseId").val().trim(),
+            information_driver_rfc: $("#RFC").val().trim(),
+            information_driver_ife: $("#IFE").val().trim(),
+            information_driver_address: $("#Address").val().trim(),
+        };
+
+        // Send the POST request.
+        $.ajax("/information_driver_list", {
+            type: "POST",
+            data: newPlan,
+            error: function () {
+                // some error handling part
+                alert("Error: DriverNO already exists");
+            }
+        }).then(
+            function () {
+                console.log("created new plan");
+                // Reload the page to get the updated list
+                location.assign("/information_driver");
+            }
+        );
+    });
+
+</script>

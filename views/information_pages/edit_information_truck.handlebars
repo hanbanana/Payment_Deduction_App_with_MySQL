@@ -1,0 +1,188 @@
+<div style="margin-left: 200px; margin-right: 200px; font-size: 13px">
+    <br>
+    <h2>Truck</h2>
+    <br>
+    <h4>Edit</h4>
+    <br>
+
+    {{!-- On One Line Form- --}}
+    <div class="formDiv">
+        {{#each truckData}}
+        <form data-id="{{this.id}}" class="update-form">
+            {{/each}}
+            <div class="form-group-sm row">
+                <div class="col-sm">
+                    {{#each truckData}}
+                    <label for="ex1">NO</label>
+                    <input class="form-control form-control-sm" placeholder="NO" name="NO" id="NO" maxlength="45"
+                        value="{{this.information_truck_no}}" style="width: 200px">
+                    <br>
+                    <label for="ex2">US Plate No</label>
+                    <input class="form-control form-control-sm" placeholder="usPlate" name="usPlate" id="usPlate"
+                        maxlength="45" value="{{this.information_truck_us_plate_no}}" style="width: 200px">
+                    <br>
+                    <label for="ex1">MX Plate</label>
+                    <input class="form-control form-control-sm" placeholder="mxPlate" name="mxPlate" id="mxPlate"
+                        maxlength="45" value="{{this.information_truck_mx_plate}}" style="width: 200px">
+                    <br>
+                    <label for="ex2">Maker</label>
+                    <input class="form-control form-control-sm" placeholder="Maker" name="Maker" id="Maker"
+                        maxlength="45" value="{{this.information_truck_maker}}" style="width: 200px">
+                    <br>
+                    <label for="ex1">Model</label>
+                    <input class="form-control form-control-sm" placeholder="Model" name="Model" id="Model"
+                        maxlength="45" value="{{this.information_truck_model}}" style="width: 200px">
+                    <br>
+                    {{/each}}
+                </div>
+
+                <div class="col-sm">
+                    {{#each truckData}}
+                    <label for="ex2">Year</label>
+                    <input class="form-control form-control-sm" placeholder="Year" name="Year" id="Year" maxlength="45"
+                        value="{{this.information_truck_year}}" style="width: 200px">
+                    <br>
+                    <label for="ex1">Color</label>
+                    <input class="form-control form-control-sm" placeholder="Color" name="Color" id="Color"
+                        maxlength="45" value="{{this.information_truck_color}}" style="width: 200px">
+                    <br>
+
+                    <label for="ex3">Owner No</label>
+                    <select class="form-control form-control-sm" name="ownerNo" id="ownerNo" required
+                        style="width: 200px">
+                        <option value="{{this.information_truck_owner_no}}" selected>
+                            {{this.information_truck_owner_no}}</option>
+                        {{/each}}
+                        {{#each ownerData}}
+                        <option value="{{this.information_owner_no}}">{{this.information_owner_no}}</option>
+                        {{/each}}
+                        {{!-- <option>Pending</option> --}}
+                    </select>
+                    <br>
+                    {{#each truckData}}
+                    <label for="ex3">Owner Name</label>
+                    <select class="form-control form-control-sm" name="ownerName" id="ownerName" required
+                        style="width: 200px">
+                        <option value="{{this.information_truck_owner_name}}" selected>
+                            {{this.information_truck_owner_name}}</option>
+                        {{/each}}
+                        {{#each ownerData}}
+                        <option value="{{this.information_owner_name}}">{{this.information_owner_name}}</option>
+                        {{/each}}
+                        {{!-- <option>Pending</option> --}}
+                    </select>
+                    <br>
+                    {{#each truckData}}
+                    <label for="ex3">Driver ID</label>
+                    <select class="form-control form-control-sm" name="driverId" id="driverId" required
+                        style="width: 200px">
+                        <option value="{{this.information_truck_driver_id}}" selected>
+                            {{this.information_truck_driver_id}}</option>
+                        {{/each}}
+                        {{#each driverData}}
+                        <option value="{{this.information_driver_no}}">{{this.information_driver_no}}</option>
+                        {{/each}}
+                        {{!-- <option>Pending</option> --}}
+                    </select>
+                    <br>
+
+                </div>
+
+                <div class="col-sm">
+                    {{#each truckData}}
+                    <label for="ex3">Driver Name</label>
+                    <select class="form-control form-control-sm" name="driverName" id="driverName" required
+                        style="width: 200px">
+                        <option value="{{this.information_truck_driver_name}}" selected>
+                            {{this.information_truck_driver_name}}</option>
+                        {{/each}}
+                        {{#each driverData}}
+                        <option value="{{this.input_truck_payment_driver_name}}">
+                            {{this.input_truck_payment_driver_name}}</option>
+                        {{/each}}
+                        {{!-- <option>Pending</option> --}}
+                    </select>
+                    <br>
+                    {{#each truckData}}
+                    <label for="ex2">Registration Name</label>
+                    <input class="form-control form-control-sm" placeholder="registrationName" name="registrationName"
+                        id="registrationName" maxlength="45" value="{{this.information_truck_registration_name}}"
+                        style="width: 200px">
+                    {{/each}}
+                    <br>
+                    {{#each truckData}}
+                    <label for="ex1">RFID Tag</label>
+                    <input class="form-control form-control-sm" placeholder="rfidTag" name="rfidTag" id="rfidTag"
+                        maxlength="45" value="{{this.information_truck_rfid_tag}}" style="width: 200px">
+                    {{/each}}
+                    <br>
+                    {{#each truckData}}
+                    <label for="ex1">Date</label>
+                    <input class="form-control form-control-sm" placeholder="Date" name="Date" id="Date"
+                        type="date" value="{{this.information_truck_date}}" maxlength="45" required
+                        style="width: 200px">
+                    {{/each}}
+                    <br>
+
+                </div>
+            </div>
+            <div class="form-group-sm row">
+                <button type="submit" class="btn btn-secondary btn-sm" style="margin-top: 25px">Save</button>
+
+
+            </div>
+    </div>
+    </form>
+    <div class="form-group-sm row">
+        <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
+            onclick="window.history.back()">Cancel</button>
+        {{!-- <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
+        onclick="window.location.href='/master_division'">Cancel</button> --}}
+        <br>
+    </div>
+</div>
+
+</div>
+<br>
+
+</div>
+
+<script type="text/javascript">
+
+    $(".update-form").on("submit", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+
+
+        var updatedPlan = {
+            information_truck_no: $("#NO").val().trim(),
+            information_truck_us_plate_no: $("#usPlate").val().trim(),
+            information_truck_mx_plate: $("#mxPlate").val().trim(),
+            information_truck_maker: $("#Maker").val().trim(),
+            information_truck_model: $("#Model").val().trim(),
+            information_truck_year: $("#Year").val().trim(),
+            information_truck_color: $("#Color").val().trim(),
+            information_truck_owner_no: $("#ownerNo").val().trim(),
+            information_truck_owner_name: $("#ownerName").val().trim(),
+            information_truck_driver_id: $("#driverId").val().trim(),
+            information_truck_driver_name: $("#driverName").val().trim(),
+            information_truck_registration_name: $("#registrationName").val().trim(),
+            information_truck_rfid_tag: $("#rfidTag").val().trim(),
+            information_truck_date: $("#Date").val().trim(),
+        };
+
+        var id = $(this).data("id");
+        // Send the PUT request.
+        $.ajax("/information_truck_list/" + id, {
+            type: "PUT",
+            data: updatedPlan
+        }).then(
+            function () {
+                console.log("updated!");
+                // Reload the page to get the updated list
+                location.assign("/information_truck");
+            }
+        );
+    });
+
+</script>

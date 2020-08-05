@@ -1,0 +1,315 @@
+<div style="margin-left: 200px; margin-right: 200px; font-size: 13px">
+  <br>
+  <h2>Add New Part Payment</h2>
+  <br>
+  <h4>Create</h4>
+  <br>
+
+  {{!-- Vertical Input Form
+  <form id="createplan">
+    <div class="form-group row form-horizontal">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">BL</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" placeholder="BL" name="BL" id="BL">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Terminal Name</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" placeholder="Terminal Name" name="Terminal_Name" id="Terminal_Name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Container No.</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" placeholder="Container No." name="Container_No" id="Container_No">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Vasse No.</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" placeholder="Vassel No." name="Vassel_No" id="Vassel_No">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">ETA</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control form-control-sm" placeholder="ETA" name="ETA" id="ETA">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Weight(kg)</label>
+      <div class="col-sm-10">
+        <input type="number" step="0.001" name="amount" placeholder="0.000" class="form-control form-control-sm"
+          name="Weight" id="Weight">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Seal No.</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" placeholder="Seal No." name="Seal_No" id="Seal_No">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Delivery Location</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" placeholder="Delivery Location" name="Delivery_Location"
+          id="Delivery_Location">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Status</label>
+      <div class="col-sm-10">
+        <select class="form-control form-control-sm" name="Status_" id="Status_">
+          <option selected>Choose...</option>
+          <option>Done</option>
+          <option>Pending</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Return</label>
+      <div class="col-sm-10">
+        <select class="form-control form-control-sm" name="Return_" id="Return_">
+          <option selected>Choose...</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Close</label>
+      <div class="col-sm-10">
+        <select class="form-control form-control-sm" name="Close_" id="Close_">
+          <option selected>Choose...</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-secondary pull-right" style="display: block; margin: 0 auto;">Save</button>
+  </form> --}}
+
+
+
+
+
+
+  {{!-- On One Line Form- --}}
+  <div class="formDiv">
+
+    <form id="createplan">
+      <div class="form-group-sm row">
+        <div class="col-sm">
+          {{#each partPurchaseData}}
+          <label for="ex1">Status</label>
+          <input class="form-control form-control-sm" placeholder="Status" name="Status" id="Status"
+            value="{{this.input_part_purchase_status}}" style="width: 200px" disabled>
+          <br>
+          <label for="ex2">Type</label>
+          <input class="form-control form-control-sm" placeholder="Type" name="Type" id="type"
+            value="{{this.input_part_purchase_type}}" style="width: 200px" disabled>
+          <br>
+          <label for="ex1">Truck NO</label>
+          <input class="form-control form-control-sm" placeholder="truckNo" name="truckNo" id="truckNo"
+            value="{{this.input_part_purchase_truck_no}}" style="width: 200px" disabled>
+          <br>
+          <label for="ex2">Owner Id</label>
+          <input class="form-control form-control-sm" placeholder="ownerId" name="ownerId" id="ownerId"
+            value="{{this.input_part_purchase_owner_id}}" style="width: 200px" disabled>
+          <br>
+          <label for="ex2">Driver Id</label>
+          <input class="form-control form-control-sm" placeholder="driverId" name="driverId" id="driverId"
+            value="{{this.input_part_purchase_driver_id}}" style="width: 200px" disabled>
+          <br>
+          {{/each}}
+        </div>
+        <div class="col-sm">
+          {{#each partPurchaseData}}
+          <label for="ex2">Invoice No</label>
+          <input class="form-control form-control-sm" placeholder="invoiceNo" name="invoiceNo" id="invoiceNo"
+            type="text" value="{{this.input_part_purchase_invoice_no}}" maxlength="45" disabled style="width: 200px">
+          <br>
+          <label for="ex1">Total Part Amount</label>
+          <input class="form-control form-control-sm" placeholder="Amount" name="Amount" id="Amount" type="text"
+            value="{{this.input_part_purchase_amount}}" maxlength="45" disabled style="width: 200px">
+          <br>
+          <label for="ex1">Pay/week</label>
+          <input class="form-control form-control-sm" placeholder="payWeek" name="payWeek" id="payWeek" type="text"
+            value="{{this.input_part_purchase_pay_week}}" maxlength="45" disabled style="width: 200px">
+          <br>
+          <label for="ex1">Sale Date</label>
+          <input class="form-control form-control-sm" placeholder="Date" name="Date" id="Date" type="date"
+            value="{{this.input_part_purchase_date}}" maxlength="45" disabled style="width: 200px">
+          <br>
+
+          <label for="ex1">Balance Amount</label>
+          <input class="form-control form-control-sm" placeholder="balanceAmount" name="balanceAmount"
+            id="balanceAmount" type="text" value="{{this.input_part_purchase_balance_amount}}" maxlength="200px"
+            disabled style="width: 200px">
+          {{/each}}
+        </div>
+        <div class="col-sm">
+            {{#each partPurchaseData}}
+          <label for="ex2">CR</label>
+          <input class="form-control form-control-sm" placeholder="CR" name="CR" id="CR" type="text"
+            value="{{this.input_part_purchase_cr}}" maxlength="200px" disabled style="width: 200px">
+          <br>
+          <label for="ex1">Invoice</label>
+          <input class="form-control form-control-sm" placeholder="Invoice" name="Invoice" id="Invoice" type="text"
+            value="{{this.input_part_purchase_invoice}}" maxlength="45" disabled style="width: 200px">
+          <br>
+          <label for="ex1">DESC</label>
+          <input class="form-control form-control-sm" placeholder="DESC" name="DESC" id="DESC" type="text"
+            value="{{this.input_part_purchase_desc}}" maxlength="45" disabled style="width: 200px">
+          <br>
+                    <label for="ex2">Total Paid Balance Amount</label>
+          <input class="form-control form-control-sm" placeholder="paidAmount" name="paidAmount" id="paidAmount"
+            type="text" value="{{this.input_part_purchase_paid_amount}}" maxlength="200px" disabled
+            style="width: 200px">
+          <br>
+          {{/each}}
+        </div>
+        <div class="col-sm">
+          {{#each partPurchaseData}}
+
+          <label for="ex2">This Time Add Payment</label>
+          <input class="form-control form-control-sm" placeholder="addPay" name="addPay" id="addPay" type="text"
+            maxlength="200px" required style="width: 200px">
+          <br>
+
+          <label for="ex1">Paid Date</label>
+          <input class="form-control form-control-sm" placeholder="paidDate" name="paidDate" id="paidDate" type="date"
+            maxlength="45" required style="width: 200px">
+          <br>
+          <label for="ex1" id='balanceId'>New Balance Amount</label>
+          <p style='border: 2px solid grey; border-radius: .2rem; padding-top: 2px; padding-left: 5px; width: 200px; height: 30px'
+            id="newBalanceAmount" required></p>
+          {{/each}}
+
+          {{!-- <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
+                        onclick="window.history.back()">Cancel</button> --}}
+          <button class="btn btn-secondary btn-sm" id="cancelButton" style="margin-top: 25px">Cancel</button>
+
+          <button type="submit" class="btn btn-secondary btn-sm" style="margin-top: 25px">Save</button>
+        </div>
+
+
+      </div>
+    </form>
+
+    {{!-- <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
+        onclick="window.location.href='/master_division'">Cancel</button> --}}
+
+    <br>
+
+  </div>
+
+</div>
+<br>
+
+<script type="text/javascript">
+
+
+  $("#createplan").on("submit", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var part_total_amount = Number($("#Amount").val());
+    var down_payment = Number($("#downPayment").val());
+    var pay_per_month = Number($("#payMonth").val());
+    var paid_amount = Number($("#paidAmount").val());
+    var this_time_payment = Number($("#addPay").val());
+    var balance_amount = Number($("#balanceAmount").val());
+
+    var result_balance_amount = balance_amount - this_time_payment;
+    var result_balance_amount2 = result_balance_amount.toFixed(2);
+
+    var result_total_paid_balance_amount = paid_amount + this_time_payment;
+    var result_total_paid_balance_amount2 = result_total_paid_balance_amount.toFixed(2);
+
+    $("#newBalanceAmount").html(result_balance_amount2);
+
+    var newPlan = {
+       input_part_purchase_status: $("#Status").val().trim(),
+      input_part_purchase_type: $("#type").val().trim(),
+      input_part_purchase_truck_no: $("#truckNo").val().trim(),
+      input_part_purchase_owner_id: $("#ownerId").val().trim(),
+      input_part_purchase_driver_id: $("#driverId").val().trim(),
+      input_part_purchase_invoice_no: $("#invoiceNo").val().trim(),
+      input_part_purchase_amount: $("#Amount").val().trim(),
+      input_part_purchase_pay_week: $("#payWeek").val().trim(),
+      input_part_purchase_date: $("#Date").val().trim(),
+
+      input_part_purchase_cr: $("#CR").val().trim(),
+      input_part_purchase_invoice: $("#Invoice").val().trim(),
+      input_part_purchase_desc: $("#DESC").val().trim(),
+      input_part_purchase_paid_amount: result_total_paid_balance_amount2,
+      input_part_purchase_this_time_payment: $("#addPay").val().trim(),
+      input_part_purchase_paid_date: $("#paidDate").val().trim(),
+     input_part_purchase_balance_amount: $("#newBalanceAmount").text().trim(),
+    };
+
+
+    // Send the POST request.
+    $.ajax("/input_part_purchase_list", {
+      type: "POST",
+      data: newPlan
+    }).then(
+      function () {
+        console.log("created new plan");
+        // Reload the page to get the updated list
+        location.assign("/deduction_search_part");
+      }
+    );
+
+
+  });
+
+  // Cancel Button
+  $("#cancelButton").on("click", function () {
+    event.preventDefault();
+    location.assign("/deduction_search_part");
+  });
+
+
+  // Calculate
+  var truck_total_amount = 0;
+  var down_payment = 0;
+  var pay_per_month = 0;
+  var paid_amount = 0;
+  var balance_amount = 0;
+
+  var result_balance_Amaount = 0;
+
+  $("#newBalanceAmount").on("click", function () {
+    event.preventDefault();
+
+    calculate();
+    function calculate() {
+
+      var this_time_payment = Number($("#addPay").val());
+      var balance_amount = Number($("#balanceAmount").val());
+
+      var result_balance_amount = balance_amount - this_time_payment;
+      var result_balance_amount2 = result_balance_amount.toFixed(2);
+      $("#newBalanceAmount").html(result_balance_amount2);
+
+
+      // result_totalCostToAmazon = (supplier_price * order_quantity) + ship_to_us_or_amazon + ship_to_amazon + upc_code + upc_sticker;
+      // result_amazonFbmFee = amazon_fee + fba_fee;
+      // result_netProfitFromAmazon = price_on_amazon - amazon_fee - fba_fee;
+      // result_finalPurchasingItemPrice = result_totalCostToAmazon / order_quantity;
+      // result_finalPurchasingListingPrice = item_quantity_on_listing * (result_totalCostToAmazon / order_quantity);
+      // result_finalProfit = price_on_amazon - amazon_fee - fba_fee - result_finalPurchasingListingPrice;
+      // result_shipUs = (supplier_price * order_quantity) * 0.6;
+      // result_shipAmazon = (supplier_price * order_quantity) * 0.4;
+      // result_shipCostEachItem
+
+
+      console.log(result_balance_Amaount);
+    };
+  });
+
+
+</script>
