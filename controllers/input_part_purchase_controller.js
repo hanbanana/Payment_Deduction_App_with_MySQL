@@ -114,12 +114,15 @@ router.get("/input_pages/create_input_part_purchase/:input_truck_payment_truck_n
         connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
             connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
                 connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
-                    if (err) {
-                        return res.status(500).end();
-                    }
-                    else if (req.session.user === "adminSession") {
-                        res.render("input_pages/create_input_part_purchase", {truckPaymentData, ownerData, driverData, truckData });
-                    };
+                    connection.query("SELECT  COUNT(*) AS cnt FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, data) {
+                        if (data[0].cnt < 1) {
+                            // Already exist 
+                            res.send('Truck Number does not exist!');
+                        }
+                        else if (req.session.user === "adminSession") {
+                            res.render("input_pages/create_input_part_purchase", { truckPaymentData, ownerData, driverData, truckData });
+                        };
+                    });
                 });
             });
         });
@@ -127,20 +130,38 @@ router.get("/input_pages/create_input_part_purchase/:input_truck_payment_truck_n
 });
 
 // Use Handlebars to render the create_b_division.handlebars page.
-router.get("/input_pages/create_input_part_purchase", function (req, res) {
-    connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
-        connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
-            connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
-                if (err) {
-                    return res.status(500).end();
-                }
-                else if (req.session.user === "adminSession") {
-                    res.render("input_pages/create_input_part_purchase", { information_owner: ownerData, information_driver: driverData, input_truck: truckData });
-                };
-            });
-        });
-    });
-});
+// router.get("/input_pages/create_input_part_purchase/:input_truck_payment_truck_no", function (req, res) {
+//     connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
+//         connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
+//             connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
+//                 connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
+//                     if (err) {
+//                         return res.status(500).end();
+//                     }
+//                     else if (req.session.user === "adminSession") {
+//                         res.render("input_pages/create_input_part_purchase", {truckPaymentData, ownerData, driverData, truckData });
+//                     };
+//                 });
+//             });
+//         });
+//     });
+// });
+
+// Use Handlebars to render the create_b_division.handlebars page.
+// router.get("/input_pages/create_input_part_purchase", function (req, res) {
+//     connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
+//         connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
+//             connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
+//                 if (err) {
+//                     return res.status(500).end();
+//                 }
+//                 else if (req.session.user === "adminSession") {
+//                     res.render("input_pages/create_input_part_purchase", { information_owner: ownerData, information_driver: driverData, input_truck: truckData });
+//                 };
+//             });
+//         });
+//     });
+// });
 
 // Use Handlebars to render the edit_b_division.handlebars page.
 router.get("/input_pages/edit_input_part_purchase/:id", function (req, res) {

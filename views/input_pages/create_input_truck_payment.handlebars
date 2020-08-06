@@ -73,6 +73,7 @@
 
         </div>
         <div class="col-sm">
+          {{#each truckPaymentData}}
           <label for="ex1">Sale Date</label>
           <input class="form-control form-control-sm" placeholder="saleDate" name="saleDate" id="saleDate" type="date"
             maxlength="45" required style="width: 200px">
@@ -96,14 +97,14 @@
             id="totalPaidBalanceAmount" required></p>
           <br>
 
-
+          {{/each}}
           {{!-- <label for="ex2">Paid Amount</label>
           <input class="form-control form-control-sm" placeholder="paidAmount" name="paidAmount" id="paidAmount"
             type="currency" maxlength="200px" required style="width: 200px">
           <br> --}}
         </div>
         <div class="col-sm">
-
+          {{#each truckPaymentData}}
           {{!-- <label for="ex2">Paid Date</label>
           <input class="form-control form-control-sm" placeholder="paidDate" name="paidDate" id="paidDate" type="date"
             maxlength="200px" required style="width: 200px">
@@ -125,7 +126,7 @@
           <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
             onclick="window.history.back()">Cancel</button>
           <button type="submit" class="btn btn-secondary btn-sm" style="margin-top: 25px">Save</button>
-
+          {{/each}}
         </div>
       </div>
     </form>
@@ -276,6 +277,6 @@
   });
 
 
-document.getElementById('saleDate').valueAsDate = new Date();
+  document.getElementById('saleDate').valueAsDate = new Date();
 
 </script>

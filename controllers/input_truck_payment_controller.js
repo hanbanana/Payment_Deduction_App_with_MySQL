@@ -109,36 +109,27 @@ router.get("/input_truck_payment", authAdmin, function (req, res) {
 });
 
 // Use Handlebars to render the create_b_division.handlebars page.
-// router.get("/input_pages/create_input_truck_payment/:input_truck_payment_truck_no", function (req, res) {
-//     connection.query("SELECT COUNT(*) AS cnt FROM information_truck_db WHERE information_truck_no = ? ",
-//     [req.body.information_driver_no] , function (err, data) {
-//             if (err) {
-//                 console.log(err);
-//             }
-//             else {
-//                 if (data[0].cnt > 0) {
-//                     // Already exist 
-//                     return res.status(500).end();
+router.get("/input_pages/create_input_truck_payment/:input_truck_payment_truck_no", function (req, res) {
+    connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
+        connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
+            connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
+                connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
+                    connection.query("SELECT  COUNT(*) AS cnt FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, data) {
+                        if (data[0].cnt < 1) {
+                            // Already exist 
+                            res.send('Truck Number does not exist!');
+                            // return res.render("input_pages/error");
+                        }
+                        else if (req.session.user === "adminSession") {
+                            res.render("input_pages/create_input_truck_payment", { truckPaymentData, ownerData, driverData, truckData });
+                        };
+                    });
+                });
+            });
+        });
+    });
+});
 
-//                 } else {
-//                     connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
-//                         connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
-//                             connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
-//                                 connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
-//                                     if (err) {
-//                                         return res.status(500).end();
-//                                     }
-//                                     else if (req.session.user === "adminSession") {
-//                                         res.render("input_pages/create_input_truck_payment", {truckPaymentData, ownerData, driverData, truckData });
-//                                     };
-//                                 });
-//                             });
-//                         });
-//                     });
-//                 }
-//             }
-//         })
-// });
 
 // Use Handlebars to render the create_b_division.handlebars page.
 // router.post("/input_pages/create_input_truck_payment/:input_truck_payment_truck_no", function (req, res) {
@@ -170,22 +161,22 @@ router.get("/input_truck_payment", authAdmin, function (req, res) {
 // });
 
 // Use Handlebars to render the create_b_division.handlebars page.
-router.get("/input_pages/create_input_truck_payment/:input_truck_payment_truck_no", function (req, res) {
-    connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
-        connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
-            connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
-                connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
-                    if (err) {
-                        return res.status(500).end();
-                    }
-                    else if (req.session.user === "adminSession") {
-                        res.render("input_pages/create_input_truck_payment", {truckPaymentData, ownerData, driverData, truckData });
-                    };
-                });
-            });
-        });
-    });
-});
+// router.get("/input_pages/create_input_truck_payment/:input_truck_payment_truck_no", function (req, res) {
+//     connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
+//         connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
+//             connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
+//                 connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
+//                     if (err) {
+//                         return res.status(500).end();
+//                     }
+//                     else if (req.session.user === "adminSession") {
+//                         res.render("input_pages/create_input_truck_payment", { truckPaymentData, ownerData, driverData, truckData });
+//                     };
+//                 });
+//             });
+//         });
+//     });
+// });
 
 // Use Handlebars to render the create_b_division.handlebars page.
 // router.get("/input_pages/create_input_truck_payment", function (req, res) {
