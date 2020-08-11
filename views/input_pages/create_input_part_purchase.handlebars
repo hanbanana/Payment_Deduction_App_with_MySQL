@@ -96,7 +96,7 @@
 
 
   {{!-- On One Line Form- --}}
-  <div class="formDiv">
+  <div class="formDiv" style="width: 800px">
 
     <form id="createplan">
       <div class="form-group-sm row">
@@ -128,7 +128,7 @@
           <br>
           <label for="ex1">Driver No</label>
           <input class="form-control form-control-sm" placeholder="driverNo" name="driverId" id="driverId"
-            value="{{this.information_truck_owner_name}}" style="width: 200px" disabled>
+            value="{{this.information_truck_driver_id}}" style="width: 200px" disabled>
           <br>
           {{/each}}
           {{!-- <label for="ex3">Truck NO</label>
@@ -197,6 +197,11 @@
           <input class="form-control form-control-sm" placeholder="paidDate" name="paidDate" id="paidDate" type="date"
             maxlength="45" required style="width: 200px">
           <br> --}}
+          {{!-- This Time Payment --}}
+          <label for="ex2">Add Pay</label>
+          <input class="form-control form-control-sm" placeholder="thisTimePayment" name="thisTimePayment"
+            id="thisTimePayment" type="text" maxlength="200px" style="width: 200px" required>
+          <br>
           <label for="ex2">CR</label>
           <input class="form-control form-control-sm" placeholder="CR" name="CR" id="CR" maxlength="200px" required
             style="width: 200px">
@@ -255,22 +260,23 @@
 
 
     var newPlan = {
-      input_part_purchase_type: $("#Type").val().trim(),
-      input_part_purchase_truck_no: $("#truckNo").val().trim(),
-      input_part_purchase_owner_id: $("#ownerId").val().trim(),
-      input_part_purchase_driver_id: $("#driverId").val().trim(),
-      input_part_purchase_invoice_no: $("#invoiceNo").val().trim(),
-      input_part_purchase_amount: $("#Amount").val().trim(),
-      input_part_purchase_pay_week: $("#payWeek").val().trim(),
-      input_part_purchase_date: $("#Date").val().trim(),
-      input_part_purchase_cr: $("#CR").val().trim(),
-      input_part_purchase_invoice: $("#Invoice").val().trim(),
-      input_part_purchase_desc: $("#DESC").val().trim(),
+      type: $("#Type").val().trim(),
+      truckNo: $("#truckNo").val().trim(),
+      ownerId: $("#ownerId").val().trim(),
+      driverId: $("#driverId").val().trim(),
+      invoiceNo: $("#invoiceNo").val().trim(),
+      totalAmount: $("#Amount").val().trim(),
+      payWeek: $("#payWeek").val().trim(),
+      saleDate: $("#Date").val().trim(),
+      cr: $("#CR").val().trim(),
+      invoice: $("#Invoice").val().trim(),
+      desc: $("#DESC").val().trim(),
+      paidAmount: $("#thisTimePayment").val().trim(),
 
     };
 
     // Send the POST request.
-    $.ajax("/input_part_purchase_list", {
+    $.ajax("/input_truck_and_part_paymen_list", {
       type: "POST",
       data: newPlan
     }).then(
@@ -353,7 +359,7 @@
   });
 
 
-document.getElementById('Date').valueAsDate = new Date();
+  document.getElementById('Date').valueAsDate = new Date();
 
 
 </script>

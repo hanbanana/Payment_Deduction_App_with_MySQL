@@ -116,7 +116,7 @@ router.get("/input_pages/create_input_part_purchase/:input_truck_payment_truck_n
                 connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
                     connection.query("SELECT  COUNT(*) AS cnt FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, data) {
                         if (data[0].cnt < 1) {
-                            // Already exist 
+                            // Does not exist 
                             res.send('Truck Number does not exist!');
                         }
                         else if (req.session.user === "adminSession") {
@@ -195,9 +195,9 @@ router.get("/input_pages/delete_input_part_purchase/:id", function (req, res) {
 });
 
 // Create a new list
-router.post("/input_part_purchase_list", function (req, res) {
-    connection.query("INSERT INTO input_part_purchase_db (input_part_purchase_status, input_part_purchase_type, input_part_purchase_truck_no, input_part_purchase_owner_id, input_part_purchase_driver_id, input_part_purchase_invoice_no, input_part_purchase_amount, input_part_purchase_pay_week, input_part_purchase_date, input_part_purchase_cr, input_part_purchase_invoice, input_part_purchase_desc, input_part_purchase_paid_amount, input_part_purchase_this_time_payment, input_part_purchase_paid_date, input_part_purchase_balance_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [req.body.input_part_purchase_status, req.body.input_part_purchase_type, req.body.input_part_purchase_truck_no, req.body.input_part_purchase_owner_id, req.body.input_part_purchase_driver_id, req.body.input_part_purchase_invoice_no, req.body.input_part_purchase_amount, req.body.input_part_purchase_pay_week, req.body.input_part_purchase_date, req.body.input_part_purchase_cr, req.body.input_part_purchase_invoice, req.body.input_part_purchase_desc, req.body.input_part_purchase_paid_amount, req.body.input_part_purchase_this_time_payment, req.body.input_part_purchase_paid_date, req.body.input_part_purchase_balance_amount], function (err, result) {
+router.post("/input_truck_and_part_paymen_list", function (req, res) {
+    connection.query("INSERT INTO truck_and_part_payment_tb (type, truckNo, ownerId, driverId, invoiceNo, totalAmount, payWeek, saleDate, cr, invoice, desc, paidAmount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [req.body.type, req.body.truckNo, req.body.ownerId, req.body.driverId, req.body.invoiceNo, req.body.totalAmount, req.body.payWeek, req.body.saleDate, req.body.cr, req.body.invoice, req.body.desc, req.body.paidAmount], function (err, result) {
             if (err) {
                 return res.status(500).end();
             }
@@ -210,8 +210,8 @@ router.post("/input_part_purchase_list", function (req, res) {
 
 
 // Retrieve all list
-router.get("/input_part_purchase_list", function (req, res) {
-    connection.query("SELECT * FROM input_part_purchase_db;", function (err, data) {
+router.get("/input_truck_and_part_paymen_list", function (req, res) {
+    connection.query("SELECT * FROM truck_and_part_payment_tb;", function (err, data) {
         if (err) {
             return res.status(500).end();
         }

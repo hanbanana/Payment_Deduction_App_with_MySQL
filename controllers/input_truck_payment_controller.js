@@ -109,14 +109,14 @@ router.get("/input_truck_payment", authAdmin, function (req, res) {
 });
 
 // Use Handlebars to render the create_b_division.handlebars page.
-router.get("/input_pages/create_input_truck_payment/:input_truck_payment_truck_no", function (req, res) {
-    connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
+router.get("/input_pages/create_input_truck_payment/:truckNo", function (req, res) {
+    connection.query("SELECT * FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.truckNo], function (err, truckPaymentData) {
         connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
             connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
                 connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
-                    connection.query("SELECT  COUNT(*) AS cnt FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, data) {
+                    connection.query("SELECT  COUNT(*) AS cnt FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.truckNo], function (err, data) {
                         if (data[0].cnt < 1) {
-                            // Already exist 
+                            // Does not exist 
                             res.send('Truck Number does not exist!');
                             // return res.render("input_pages/error");
                         }
@@ -226,9 +226,9 @@ router.get("/input_pages/delete_input_truck_payment/:id", function (req, res) {
 });
 
 // Create a new list
-router.post("/input_truck_payment_list", function (req, res) {
-    connection.query("INSERT INTO input_truck_payment_db (input_truck_payment_truck_no, input_truck_payment_owner_id, input_truck_payment_owner_name, input_truck_payment_truck_total_amount, input_truck_payment_down_payment, input_truck_payment_sale_date, input_truck_payment_pay_month, input_truck_payment_paid_amount, input_truck_payment_balance_amount, input_truck_payment_this_time_payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [req.body.input_truck_payment_truck_no, req.body.input_truck_payment_owner_id, req.body.input_truck_payment_owner_name, req.body.input_truck_payment_truck_total_amount, req.body.input_truck_payment_down_payment, req.body.input_truck_payment_sale_date, req.body.input_truck_payment_pay_month, req.body.input_truck_payment_paid_amount, req.body.input_truck_payment_balance_amount, req.body.input_truck_payment_this_time_payment], function (err, result) {
+router.post("/input_truck_and_part_paymen_list", function (req, res) {
+    connection.query("INSERT INTO truck_and_part_payment_tb (truckNo, ownerId, ownerName, totalAmount, downPayment, saleDate, payWeek, total_paid_amount, balanceAmount, paidAmount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [req.body.truckNo, req.body.ownerId, req.body.ownerName, req.body.totalAmount, req.body.downPayment, req.body.saleDate, req.body.payWeek, req.body.total_paid_amount, req.body.balanceAmount, req.body.paidAmount], function (err, result) {
             if (err) {
                 return res.status(500).end();
             }
@@ -241,8 +241,8 @@ router.post("/input_truck_payment_list", function (req, res) {
 
 
 // Retrieve all list
-router.get("/input_truck_payment_list", function (req, res) {
-    connection.query("SELECT * FROM input_truck_payment_db;", function (err, data) {
+router.get("/input_truck_and_part_paymen_list", function (req, res) {
+    connection.query("SELECT * FROM truck_and_part_payment_tb;", function (err, data) {
         if (err) {
             return res.status(500).end();
         }
