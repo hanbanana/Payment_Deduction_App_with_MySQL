@@ -114,6 +114,7 @@
             <option value="" disabled selected>Choose...</option>
             <option value="S">S</option>
             <option value="F">F</option>
+            <option value="T">T</option>
             {{!-- <option>Pending</option> --}}
           </select>
           <br>
@@ -169,7 +170,7 @@
             id="invoiceNumberGenerate" required></p> --}}
 
           <br>
-          <label for="ex2">Total Part Amount</label>
+          <label for="ex2">Total Amount</label>
           <input class="form-control form-control-sm" placeholder="Amount" name="Amount" id="Amount" maxlength="45"
             required style="width: 200px">
           <br>
@@ -270,13 +271,13 @@
       saleDate: $("#Date").val().trim(),
       cr: $("#CR").val().trim(),
       invoice: $("#Invoice").val().trim(),
-      desc: $("#DESC").val().trim(),
+      desc1: $("#DESC").val().trim(),
       paidAmount: $("#thisTimePayment").val().trim(),
 
     };
 
     // Send the POST request.
-    $.ajax("/input_truck_and_part_paymen_list", {
+    $.ajax("/input_truck_and_part_payment_list", {
       type: "POST",
       data: newPlan
     }).then(

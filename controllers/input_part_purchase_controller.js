@@ -195,7 +195,7 @@ router.get("/input_pages/delete_input_part_purchase/:id", function (req, res) {
 });
 
 // Create a new list
-router.post("/input_truck_and_part_paymen_list", function (req, res) {
+router.post("/input_truck_and_part_payment_list", function (req, res) {
     connection.query("INSERT INTO truck_and_part_payment_tb (type, truckNo, ownerId, driverId, invoiceNo, totalAmount, payWeek, saleDate, cr, invoice, desc, paidAmount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [req.body.type, req.body.truckNo, req.body.ownerId, req.body.driverId, req.body.invoiceNo, req.body.totalAmount, req.body.payWeek, req.body.saleDate, req.body.cr, req.body.invoice, req.body.desc, req.body.paidAmount], function (err, result) {
             if (err) {
@@ -209,8 +209,23 @@ router.post("/input_truck_and_part_paymen_list", function (req, res) {
 });
 
 
+// Create a new list
+// router.post("/input_truck_and_part_payment_list", function (req, res) {
+//     connection.query("INSERT INTO truck_and_part_payment_tb (truckNo, ownerId, ownerName, driverId, type, status, invoiceNo, totalAmount, downPayment, cr, saleDate, payWeek, paidAmount, total_paid_amount, balanceAmount, invoice, desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+//         [req.body.truckNo, req.body.ownerId, req.body.ownerName, req.body.driverId, req.body.type, req.body.status, req.body.invoiceNo, req.body.totalAmount, req.body.downPayment, req.body.cr, req.body.saleDate, req.body.payWeek, req.body.paidAmount, req.body.total_paid_amount, req.body.balanceAmount, req.body.invoice, req.body.desc], function (err, result) {
+//             if (err) {
+//                 return res.status(500).end();
+//             }
+
+//             // Send back the ID of the new todo
+//             res.json({ id: result.insertId });
+//             console.log({ id: result.insertId });
+//         });
+// });
+
+
 // Retrieve all list
-router.get("/input_truck_and_part_paymen_list", function (req, res) {
+router.get("/input_truck_and_part_payment_list", function (req, res) {
     connection.query("SELECT * FROM truck_and_part_payment_tb;", function (err, data) {
         if (err) {
             return res.status(500).end();

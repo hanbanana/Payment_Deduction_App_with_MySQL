@@ -115,13 +115,43 @@
             id="balanceAmount" required></p>
 
           <label for="ex1">Pay/Week</label>
-          <input class="form-control form-control-sm" placeholder="payWeek" name="payWeek" id="payWeek"
-            type="currency" maxlength="45" required style="width: 200px">
+          <input class="form-control form-control-sm" placeholder="payWeek" name="payWeek" id="payWeek" type="currency"
+            maxlength="45" required style="width: 200px">
 
           {{!-- <p style='border: 2px solid grey; border-radius: .2rem; padding-top: 2px; padding-left: 5px; width: 200px; height: 30px'
             id="payMonth36" required></p> --}}
 
           <br>
+
+          <span hidden>
+            <label for="ex3">Type</label>
+            <p class="form-control form-control-sm" name="Type" id="Type" required style="width: 200px"></p>
+            <br>
+            <label for="ex1">Driver No</label>
+            <p class="form-control form-control-sm" placeholder="driverNo" name="driverId" id="driverId"
+              style="width: 200px"></p>
+            <br>
+            <label for="ex2">Invoice No</label>
+            <p class="form-control form-control-sm" placeholder="Invoice No" name="invoiceNo" id="invoiceNo"
+              maxlength="45" required style="width: 200px"></p>
+            <br>
+            <label for="ex1">Invoice</label>
+            <p class="form-control form-control-sm" placeholder="Invoice" name="Invoice" id="Invoice" maxlength="45"
+              required style="width: 200px"></p>
+            <br>
+            <label for="ex2">DESC</label>
+            <p class="form-control form-control-sm" placeholder="DESC" name="DESC" id="DESC" maxlength="200px"
+              required style="width: 200px"></p>
+            <br>
+            <label for="ex2">CR</label>
+            <p class="form-control form-control-sm" placeholder="CR" name="CR" id="CR" maxlength="200px" required
+              style="width: 200px"></p>
+            <br>
+            <label for="ex2">Status</label>
+            <p class="form-control form-control-sm" placeholder="Status" name="Status" id="Status" maxlength="200px"
+              required style="width: 200px"></p>
+            <br>
+          </span>
 
           <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
             onclick="window.history.back()">Cancel</button>
@@ -185,10 +215,18 @@
       total_paid_amount: $("#totalPaidBalanceAmount").text().trim(),
       balanceAmount: $("#balanceAmount").text().trim(),
       paidAmount: $("#thisTimePayment").val().trim(),
+
+      type: $("#Type").val().trim(),
+      driverId: $("#driverId").val().trim(),
+      invoiceNo: $("#invoiceNo").val().trim(),
+      invoice: $("#Invoice").val().trim(),
+      desc1: $("#DESC").val().trim(),
+      cr: $("#CR").val().trim(),
+      status: $("#Status").val().trim(),
     };
 
     // Send the POST request.
-    $.ajax("/input_truck_and_part_paymen_list", {
+    $.ajax("/input_truck_and_part_payment_list", {
       type: "POST",
       data: newPlan
     }).then(

@@ -226,9 +226,9 @@ router.get("/input_pages/delete_input_truck_payment/:id", function (req, res) {
 });
 
 // Create a new list
-router.post("/input_truck_and_part_paymen_list", function (req, res) {
-    connection.query("INSERT INTO truck_and_part_payment_tb (truckNo, ownerId, ownerName, totalAmount, downPayment, saleDate, payWeek, total_paid_amount, balanceAmount, paidAmount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [req.body.truckNo, req.body.ownerId, req.body.ownerName, req.body.totalAmount, req.body.downPayment, req.body.saleDate, req.body.payWeek, req.body.total_paid_amount, req.body.balanceAmount, req.body.paidAmount], function (err, result) {
+router.post("/input_truck_and_part_payment_list", function (req, res) {
+    connection.query("INSERT INTO truck_and_part_payment_tb (truckNo, ownerId, ownerName, totalAmount, downPayment, saleDate, payWeek, total_paid_amount, balanceAmount, paidAmount, type, driverId, invoiceNo, Invoice, cr, status, desc1) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [req.body.truckNo, req.body.ownerId, req.body.ownerName, req.body.totalAmount, req.body.downPayment, req.body.saleDate, req.body.payWeek, req.body.total_paid_amount, req.body.balanceAmount, req.body.paidAmount, req.body.type, req.body.driverId, req.body.invoiceNo, req.body.invoice, req.body.cr, req.body.status, req.body.desc1], function (err, result) {
             if (err) {
                 return res.status(500).end();
             }
@@ -241,7 +241,7 @@ router.post("/input_truck_and_part_paymen_list", function (req, res) {
 
 
 // Retrieve all list
-router.get("/input_truck_and_part_paymen_list", function (req, res) {
+router.get("/input_truck_and_part_payment_list", function (req, res) {
     connection.query("SELECT * FROM truck_and_part_payment_tb;", function (err, data) {
         if (err) {
             return res.status(500).end();
