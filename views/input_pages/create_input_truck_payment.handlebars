@@ -78,7 +78,7 @@
           <input class="form-control form-control-sm" placeholder="saleDate" name="saleDate" id="saleDate" type="date"
             maxlength="45" required style="width: 200px">
           <br>
-          <label for="ex2">Truck Total Amount</label>
+          <label for="ex2">Total Amount</label>
           <input class="form-control form-control-sm" aria-label="Amount" placeholder="truckTotalAmount"
             name="truckTotalAmount" id="truckTotalAmount" type="currency" maxlength="45" required style="width: 200px">
           <br>
@@ -105,10 +105,7 @@
         </div>
         <div class="col-sm">
           {{#each truckPaymentData}}
-          {{!-- <label for="ex2">Paid Date</label>
-          <input class="form-control form-control-sm" placeholder="paidDate" name="paidDate" id="paidDate" type="date"
-            maxlength="200px" required style="width: 200px">
-          <br> --}}
+
           <label for="ex1" id='balanceId'>Balance Amount</label>
 
           <p style='border: 2px solid grey; border-radius: .2rem; padding-top: 2px; padding-left: 5px; width: 200px; height: 30px'
@@ -123,7 +120,7 @@
 
           <br>
 
-          <span hidden>
+          {{!-- <span hidden>
             <label for="ex3">Type</label>
             <p class="form-control form-control-sm" name="Type" id="Type" required style="width: 200px"></p>
             <br>
@@ -151,7 +148,7 @@
             <p class="form-control form-control-sm" placeholder="Status" name="Status" id="Status" maxlength="200px"
               required style="width: 200px"></p>
             <br>
-          </span>
+          </span> --}}
 
           <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
             onclick="window.history.back()">Cancel</button>
@@ -216,13 +213,7 @@
       balanceAmount: $("#balanceAmount").text().trim(),
       paidAmount: $("#thisTimePayment").val().trim(),
 
-      type: $("#Type").val().trim(),
-      driverId: $("#driverId").val().trim(),
-      invoiceNo: $("#invoiceNo").val().trim(),
-      invoice: $("#Invoice").val().trim(),
-      desc1: $("#DESC").val().trim(),
-      cr: $("#CR").val().trim(),
-      status: $("#Status").val().trim(),
+
     };
 
     // Send the POST request.
@@ -251,7 +242,7 @@
   var paid_amount = 0;
   var balance_amount = 0;
 
-  var result_balance_Amaount = 0;
+  var result_balance_amount = 0;
 
   $("#balanceAmount").on("click", function () {
     event.preventDefault();
@@ -274,19 +265,7 @@
       $("#balanceAmount").html(result_balance_amount2);
       $("#payMonth36").html(final_result_pay_per_month);
 
-
-      // result_totalCostToAmazon = (supplier_price * order_quantity) + ship_to_us_or_amazon + ship_to_amazon + upc_code + upc_sticker;
-      // result_amazonFbmFee = amazon_fee + fba_fee;
-      // result_netProfitFromAmazon = price_on_amazon - amazon_fee - fba_fee;
-      // result_finalPurchasingItemPrice = result_totalCostToAmazon / order_quantity;
-      // result_finalPurchasingListingPrice = item_quantity_on_listing * (result_totalCostToAmazon / order_quantity);
-      // result_finalProfit = price_on_amazon - amazon_fee - fba_fee - result_finalPurchasingListingPrice;
-      // result_shipUs = (supplier_price * order_quantity) * 0.6;
-      // result_shipAmazon = (supplier_price * order_quantity) * 0.4;
-      // result_shipCostEachItem
-
-
-      console.log(result_balance_Amaount);
+      console.log(result_balance_amount2);
     };
   });
 
@@ -310,7 +289,7 @@
 
       $("#totalPaidBalanceAmount").html(result_total_paid_balance_amount2);
 
-      console.log(result_balance_Amaount);
+      console.log(result_total_paid_balance_amount2);
     };
   });
 
