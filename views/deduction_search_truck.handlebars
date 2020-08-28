@@ -38,7 +38,7 @@
 
         $("#truckNoSearch").on("submit", function (event) {
             event.preventDefault();
-            var url = "/deduction_pages/add_truck_payment_deduction/"
+            var url = "/deduction_pages/payment/"
             var resultTotalValue = $("#truckNo").val().trim();
             var goToUrlWithTotalValue = url + resultTotalValue;
             //this will redirect us in new tab

@@ -196,8 +196,8 @@ router.get("/input_pages/delete_input_part_purchase/:id", function (req, res) {
 
 // Create a new list
 router.post("/input_truck_and_part_payment_list", function (req, res) {
-    connection.query("INSERT INTO truck_and_part_payment_tb (type, truckNo, ownerId, driverId, invoiceNo, totalAmount, payWeek, saleDate, cr, invoice, desc, paidAmount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        [req.body.type, req.body.truckNo, req.body.ownerId, req.body.driverId, req.body.invoiceNo, req.body.totalAmount, req.body.payWeek, req.body.saleDate, req.body.cr, req.body.invoice, req.body.desc, req.body.paidAmount], function (err, result) {
+    connection.query("INSERT INTO truck_and_part_payment_tb (type, truckNo, ownerId, driverId, driverName, invoiceNo, totalAmount, payWeek, saleDate, cr, invoice, desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [req.body.type, req.body.truckNo, req.body.ownerId, req.body.driverId, req.body.driverName, req.body.invoiceNo, req.body.totalAmount, req.body.payWeek, req.body.saleDate, req.body.cr, req.body.invoice, req.body.desc], function (err, result) {
             if (err) {
                 return res.status(500).end();
             }
