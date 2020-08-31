@@ -1,8 +1,6 @@
 <div style="margin-left: 200px; margin-right: 200px; font-size: 13px">
     <br>
-    <h2>Add New Truck Payment</h2>
-    <br>
-    <h4>Create</h4>
+    <h5>Add Weekly Payment</h5>
     <br>
 
     {{!-- On One Line Form- --}}
@@ -10,174 +8,197 @@
 
         <form id="createplan">
             <div class="form-group-sm row" style="column-gap: 5px;">
-                <h4>Truck Payment</h4>
+                <h6>Truck Payment</h6>
             </div>
             <div class="form-group-sm row" style="column-gap: 5px;">
+                 {{#each truckPaymentData}}
                 <span>
+                   
                     <label for="ex1">Truck NO</label>
                     <input class="form-control form-control-sm" placeholder="truckNo" name="truckNo" id="truckNo"
-                        value="{{this.input_truck_payment_truck_no}}" style="width: 200px" disabled>
+                        value="{{this.truckNo}}" style="width: 200px" disabled>
+
                 </span>
                 <br>
                 <span>
                     <label for="ex2">Owner No</label>
                     <input class="form-control form-control-sm" placeholder="ownerId" name="ownerId" id="ownerId"
-                        value="{{this.input_truck_payment_owner_id}}" style="width: 200px" disabled>
+                        value="{{this.ownerId}}" style="width: 200px" disabled>
                 </span>
                 <br>
                 <br>
                 <span>
                     <label for="ex1">Owner Name</label>
                     <input class="form-control form-control-sm" placeholder="ownerName" name="ownerName" id="ownerName"
-                        value="{{this.input_truck_payment_owner_name}}" style="width: 200px" disabled>
+                        value="{{this.ownerName}}" style="width: 200px" disabled>
                 </span>
                 <br>
                 <span>
                     <label for="ex2">Driver No</label>
                     <input class="form-control form-control-sm" placeholder="driverId" name="driverId" id="driverId"
-                        value="{{this.input_truck_payment_driver_id}}" style="width: 200px" disabled>
+                        value="{{this.driverId}}" style="width: 200px" disabled>
                 </span>
                 <br>
                 <span>
                     <label for="ex2">Driver Name</label>
                     <input class="form-control form-control-sm" placeholder="driverName" name="driverName"
-                        id="driverName" value="{{this.input_truck_payment_driver_name}}" style="width: 200px" disabled>
+                        id="driverName" value="{{this.driverName}}" style="width: 200px" disabled>
                 </span>
                 <br>
+                {{/each}}
             </div>
             <br>
-
-            <div class="form-group-sm row" style="column-gap: 5px;">
-                <span>
-                    <label for="ex2">Truck Total Amount</label>
-                    <input class="form-control form-control-sm" placeholder="truckTotalAmount" name="truckTotalAmount"
-                        id="truckTotalAmount" type="text" value="{{this.input_truck_payment_truck_total_amount}}"
-                        maxlength="45" disabled style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex1">Down Payment</label>
-                    <input class="form-control form-control-sm" placeholder="downPayment" name="downPayment"
-                        id="downPayment" type="text" value="{{this.input_truck_payment_down_payment}}" maxlength="45"
-                        disabled style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex1">Pay/month</label>
-                    <input class="form-control form-control-sm" placeholder="payMonth" name="payMonth" id="payMonth"
-                        type="text" value="{{this.input_truck_payment_pay_month}}" maxlength="45" disabled
-                        style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex2">Total Paid Balance Amount</label>
-                    <input class="form-control form-control-sm" placeholder="paidAmount" name="paidAmount"
-                        id="paidAmount" type="text" value="{{this.input_truck_payment_paid_amount}}" maxlength="200px"
-                        disabled style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex1">Balance Amount</label>
-                    <input class="form-control form-control-sm" placeholder="balanceAmount" name="balanceAmount"
-                        id="balanceAmount" type="text" value="{{this.input_truck_payment_balance_amount}}"
-                        maxlength="200px" disabled style="width: 200px">
-                </span>
-                <br>
-            </div>
-            <br>
-            <br>
-            
-            <div class="form-group-sm row" style="column-gap: 5px;">
-                <h4>Part Payment</h4>
-            </div>
-            <div class="form-group-sm row" style="column-gap: 5px;">
-                <span>
-                    <label for="ex1">Truck NO</label>
-                    <input class="form-control form-control-sm" placeholder="truckNo" name="truckNo" id="truckNo"
-                        value="{{this.input_truck_payment_truck_no}}" style="width: 200px" disabled>
-                </span>
-                <br>
-                <span>
-                    <label for="ex2">Owner No</label>
-                    <input class="form-control form-control-sm" placeholder="ownerId" name="ownerId" id="ownerId"
-                        value="{{this.input_truck_payment_owner_id}}" style="width: 200px" disabled>
-                </span>
-                <br>
-                <br>
-                <span>
-                    <label for="ex1">Owner Name</label>
-                    <input class="form-control form-control-sm" placeholder="ownerName" name="ownerName" id="ownerName"
-                        value="{{this.input_truck_payment_owner_name}}" style="width: 200px" disabled>
-                </span>
-                <br>
-                <span>
-                    <label for="ex2">Driver No</label>
-                    <input class="form-control form-control-sm" placeholder="driverId" name="driverId" id="driverId"
-                        value="{{this.input_truck_payment_driver_id}}" style="width: 200px" disabled>
-                </span>
-                <br>
-                <span>
-                    <label for="ex2">Driver Name</label>
-                    <input class="form-control form-control-sm" placeholder="driverName" name="driverName"
-                        id="driverName" value="{{this.input_truck_payment_driver_name}}" style="width: 200px" disabled>
-                </span>
-                <br>
-            </div>
-            <br>
-
-                        <div class="form-group-sm row" style="column-gap: 5px;">
-                <span>
-                    <label for="ex2">Truck Total Amount</label>
-                    <input class="form-control form-control-sm" placeholder="truckTotalAmount" name="truckTotalAmount"
-                        id="truckTotalAmount" type="text" value="{{this.input_truck_payment_truck_total_amount}}"
-                        maxlength="45" disabled style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex1">Down Payment</label>
-                    <input class="form-control form-control-sm" placeholder="downPayment" name="downPayment"
-                        id="downPayment" type="text" value="{{this.input_truck_payment_down_payment}}" maxlength="45"
-                        disabled style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex1">Pay/month</label>
-                    <input class="form-control form-control-sm" placeholder="payMonth" name="payMonth" id="payMonth"
-                        type="text" value="{{this.input_truck_payment_pay_month}}" maxlength="45" disabled
-                        style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex2">Total Paid Balance Amount</label>
-                    <input class="form-control form-control-sm" placeholder="paidAmount" name="paidAmount"
-                        id="paidAmount" type="text" value="{{this.input_truck_payment_paid_amount}}" maxlength="200px"
-                        disabled style="width: 200px">
-                </span>
-                <br>
-                <span>
-                    <label for="ex1">Balance Amount</label>
-                    <input class="form-control form-control-sm" placeholder="balanceAmount" name="balanceAmount"
-                        id="balanceAmount" type="text" value="{{this.input_truck_payment_balance_amount}}"
-                        maxlength="200px" disabled style="width: 200px">
-                </span>
-                <br>
-            </div>
 
             <div class="form-group-sm row" style="column-gap: 5px;">
                 {{#each truckPaymentData}}
-                <label for="ex2">This Time Payment</label>
-                <input class="form-control form-control-sm" placeholder="thisTimePayment" name="thisTimePayment"
-                    id="thisTimePayment" type="text" maxlength="200px" style="width: 200px" required>
+                <span>
+                    <label for="ex2">Incomet</label>
+                    <input class="form-control form-control-sm" placeholder="truckTotalAmount" name="truckTotalAmount"
+                        id="truckTotalAmount" type="text" value="{{this.input_truck_payment_truck_total_amount}}"
+                        maxlength="45" disabled style="width: 200px">
+                </span>
                 <br>
-                <label for="ex1">Paid Date</label>
-                <input class="form-control form-control-sm" placeholder="paidDate" name="paidDate" id="paidDate"
-                    type="date" maxlength="45" required style="width: 200px">
+                <span>
+                    <label for="ex1">Truck Payment</label>
+                    <input class="form-control form-control-sm" placeholder="downPayment" name="downPayment"
+                        id="downPayment" type="text" value="{{this.input_truck_payment_down_payment}}" maxlength="45"
+                        disabled style="width: 200px">
+                </span>
                 <br>
-                <label for="ex1" id='balanceId'>New Balance Amount</label>
-                <p style='border: 2px solid grey; border-radius: .2rem; padding-top: 2px; padding-left: 5px; width: 200px; height: 30px'
-                    id="newBalanceAmount" required></p>
+                <span>
+                    <label for="ex1">Total Amount</label>
+                    <input class="form-control form-control-sm" placeholder="payMonth" name="payMonth" id="payMonth"
+                        type="text" value="{{this.totalAmount}}" maxlength="45" disabled
+                        style="width: 200px">
+                </span>
+                <br>
+                <span>
+                    <label for="ex2">Paid Amount</label>
+                    <input class="form-control form-control-sm" placeholder="paidAmount" name="paidAmount"
+                        id="paidAmount" type="text" value="{{this.paidAmount}}" maxlength="200px"
+                        disabled style="width: 200px">
+                </span>
+                <br>
+                <span>
+                    <label for="ex1">Balance Amount</label>
+                    <input class="form-control form-control-sm" placeholder="balanceAmount" name="balanceAmount"
+                        id="balanceAmount" type="text" value="{{this.balanceAmount}}"
+                        maxlength="200px" disabled style="width: 200px">
+                </span>
+                <br>
                 {{/each}}
+            </div>
+            <br>
+            <div class="form-group-sm row" style="column-gap: 5px;">
+                {{#each truckPaymentData}}
+                <span>
+                    <label for="ex1">This Time Payment</label>
+                    <input class="form-control form-control-sm" placeholder="balanceAmount" name="balanceAmount"
+                        id="balanceAmount" type="text" value="{{this.payWeek}}"
+                        maxlength="200px" disabled style="width: 200px">
+                </span>
+                <br>
+                {{/each}}
+            </div>
+            <br>
+            <br>
+            <br>
 
+            <div class="form-group-sm row" style="column-gap: 5px;">
+                <h6>Part Payment</h6>
+            </div>
+            <div class="form-group-sm row" style="column-gap: 5px;">
+                {{#each servicePaymentData}}
+                <span>
+                    <label for="ex1">Truck NO</label>
+                    <input class="form-control form-control-sm" placeholder="truckNo" name="truckNo" id="truckNo"
+                        value="{{this.truckNo}}" style="width: 200px" disabled>
+                </span>
+                <br>
+                <span>
+                    <label for="ex2">Owner No</label>
+                    <input class="form-control form-control-sm" placeholder="ownerId" name="ownerId" id="ownerId"
+                        value="{{this.ownerId}}" style="width: 200px" disabled>
+                </span>
+                <br>
+                <span>
+                    <label for="ex2">Driver No</label>
+                    <input class="form-control form-control-sm" placeholder="driverId" name="driverId" id="driverId"
+                        value="{{this.driverId}}" style="width: 200px" disabled>
+                </span>
+                <br>
+                <span>
+                    <label for="ex2">Driver Name</label>
+                    <input class="form-control form-control-sm" placeholder="driverName" name="driverName"
+                        id="driverName" value="{{this.driverName}}" style="width: 200px" disabled>
+                </span>
+                <br>
+                {{/each}}
+            </div>
+            <br>
+
+            <div class="form-group-sm row" style="column-gap: 5px;">
+                {{#each servicePaymentData}}
+                <span>
+                    <label for="ex2">Invoice No</label>
+                    <input class="form-control form-control-sm" placeholder="Invoice No" name="invoiceNo"
+                        id="invoiceNo" type="text" value="{{this.invoiceNo}}"
+                        maxlength="45" disabled style="width: 200px">
+                </span>
+                <br>
+                <span>
+                    <label for="ex1">Total Amount</label>
+                    <input class="form-control form-control-sm" placeholder="Total Amount" name="Amount"
+                        id="Amount" type="text" value="{{this.totalAmount}}" maxlength="45"
+                        disabled style="width: 200px">
+                </span>
+                <br>
+                <span>
+                    <label for="ex1">Pay/week</label>
+                    <input class="form-control form-control-sm" placeholder="payWeek" name="payWeek" id="payWeek"
+                        type="text" value="{{this.payWeek}}" maxlength="45" disabled
+                        style="width: 200px">
+                </span>
+                <br>
+                <span>
+                    <label for="ex2">Sale Date</label>
+                    <input class="form-control form-control-sm" placeholder="Date" name="Date"
+                        id="Date" type="text" value="{{this.saleDate}}" maxlength="200px"
+                        disabled style="width: 200px">
+                </span>
+                <br>
+                <span>
+                    <label for="ex1">CR</label>
+                    <input class="form-control form-control-sm" placeholder="CR" name="CR"
+                        id="CR" type="text" value="{{this.cr}}"
+                        maxlength="200px" disabled style="width: 200px">
+                </span>
+                <br>
+                {{/each}}
+            </div>
+            <br>
+            <div class="form-group-sm row" style="column-gap: 5px;">
+                {{#each servicePaymentData}}
+                <span>
+                    <label for="ex1">Invoice</label>
+                    <input class="form-control form-control-sm" placeholder="Invoice" name="Invoice"
+                        id="Invoice" type="text" value="{{this.invoice}}"
+                        maxlength="200px" disabled style="width: 200px">
+                </span>
+                <br>
+                                <span>
+                    <label for="ex1">DESC</label>
+                    <input class="form-control form-control-sm" placeholder="DESC" name="DESC"
+                        id="DESC" type="text" value="{{this.desc1}}"
+                        maxlength="200px" disabled style="width: 200px">
+                </span>
+                <br>
+                {{/each}}
+            </div>
+            <br>
+
+            <div class="form-group-sm row" style="column-gap: 5px;">
+             
                 {{!-- <button class="btn btn-secondary btn-sm" style="margin-top: 25px"
                         onclick="window.history.back()">Cancel</button> --}}
                 <button class="btn btn-secondary btn-sm" id="cancelButton" style="margin-top: 25px">Cancel</button>

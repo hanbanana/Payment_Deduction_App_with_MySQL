@@ -124,17 +124,26 @@ router.get("/deduction_search_truck", authAdmin, function (req, res) {
 //     });
 // });
 
-router.get("/deduction_pages/payment/:input_truck_payment_truck_no", function (req, res) {
-    connection.query("SELECT * FROM bc_deduction_db.input_truck_payment_db where id in (SELECT MAX(id) FROM bc_deduction_db.input_truck_payment_db where input_truck_payment_truck_no = ?)", [req.params.input_truck_payment_truck_no], function (err, truckPaymentData) {
-        connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
-            connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
-                connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
-                    if (err) {
-                        return res.status(500).end();
-                    }
-                    else if (req.session.user === "adminSession") {
-                        res.render("deduction_pages/payment", {truckPaymentData, ownerData, driverData, truckData });
-                    };
+// Use Handlebars to render the create_b_division.handlebars page.
+router.get("/deduction_pages/payment/:truckNo", function (req, res) {
+    connection.query("SELECT * FROM bc_deduction_db.truck_and_part_payment_tb where id in (SELECT MAX(id) FROM bc_deduction_db.truck_and_part_payment_tb where truckNo = ? and type = 'Truck')", [req.params.truckNo], function (err, truckPaymentData) {
+        connection.query("SELECT * FROM bc_deduction_db.truck_and_part_payment_tb where id in (SELECT MAX(id) FROM bc_deduction_db.truck_and_part_payment_tb where truckNo = ? and type = 'Service')", [req.params.truckNo], function (err, servicePaymentData) {
+            connection.query("SELECT * FROM bc_deduction_db.truck_and_part_payment_tb where id in (SELECT MAX(id) FROM bc_deduction_db.truck_and_part_payment_tb where truckNo = ? and type = 'Finance')", [req.params.truckNo], function (err, financePaymentData) {
+                connection.query("SELECT * FROM information_owner_db;", function (err, ownerData) {
+                    connection.query("SELECT * FROM information_driver_db;", function (err, driverData) {
+                        connection.query("SELECT * FROM information_truck_db;", function (err, truckData) {
+                            connection.query("SELECT  COUNT(*) AS cnt FROM bc_deduction_db.information_truck_db where id in (SELECT MAX(id) FROM bc_deduction_db.information_truck_db where information_truck_no = ?)", [req.params.truckNo], function (err, data) {
+                                if (data[0].cnt < 1) {
+                                    // Does not exist 
+                                    res.send('Truck Number does not exist!');
+                                    // return res.render("input_pages/error");
+                                }
+                                else if (req.session.user === "adminSession") {
+                                    res.render("deduction_pages/payment", { truckPaymentData, servicePaymentData, financePaymentData, ownerData, driverData, truckData });
+                                };
+                            });
+                        });
+                    });
                 });
             });
         });

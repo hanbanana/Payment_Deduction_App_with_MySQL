@@ -41,7 +41,7 @@ CREATE TABLE `information_truck_db` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `information_truck_db` (
 
 LOCK TABLES `information_truck_db` WRITE;
 /*!40000 ALTER TABLE `information_truck_db` DISABLE KEYS */;
-INSERT INTO `information_truck_db` VALUES (22,'T-0001','8US123','3MX456','Volvo','XC60','2018','White','O-0001','Jose M','D-0001','Kevin K','RG123','RF789','','2020-06-19 14:59:17','2020-06-19 21:59:17'),(23,'T-0002','5US654','2MX753','Benz','E500','2019','Blue','O-0002','Luis R','D-0002','Mike M','RG00254','RF99921','','2020-06-19 15:00:21','2020-06-19 22:00:21'),(24,'T-0003','8US234','7MX987','BMW','M4','2019','Blue','O-0003','Jay L','D-0003','Maria B','R648432','RFID98435465','','2020-06-22 16:40:09','2020-06-26 16:48:49'),(25,'T-0004','shdf','dsk','sk','dskj','2020','WH','O-0002','Jose M','D-0001','Kevin Kfff','dskjfff','skjdfffffa','','2020-06-22 22:35:31','2020-06-25 22:29:45'),(26,'T-0005','US123','MX456','HHD','CVB','2019','Blue','O-0001','Jose M','D-0002','Mike M','REG123','RFID456','','2020-07-09 10:26:38','2020-07-09 17:26:38'),(31,'T-0001','1','1','1','1','1','1','12','Nancy E','d-0001','fhd','1','1','2020-08-03','2020-08-05 08:23:43','2020-08-05 15:23:43'),(32,'t-0001','t','t','t','t','t','t','1111','sdf','11','gd','t','t','2020-02-02','2020-08-05 13:43:53','2020-08-05 20:43:53');
+INSERT INTO `information_truck_db` VALUES (22,'T-0001','8US123','3MX456','Volvo','XC60','2018','White','O-0001','Jose M','D-0001','Kevin K','RG123','RF789','','2020-06-19 14:59:17','2020-06-19 21:59:17'),(23,'T-0002','5US654','2MX753','Benz','E500','2019','Blue','O-0002','Luis R','D-0002','Mike M','RG00254','RF99921','','2020-06-19 15:00:21','2020-06-19 22:00:21'),(24,'T-0003','8US234','7MX987','BMW','M4','2019','Blue','O-0003','Jay L','D-0003','Maria B','R648432','RFID98435465','','2020-06-22 16:40:09','2020-06-26 16:48:49'),(25,'T-0004','shdf','dsk','sk','dskj','2020','WH','O-0002','Jose M','D-0001','Kevin Kfff','dskjfff','skjdfffffa','','2020-06-22 22:35:31','2020-06-25 22:29:45'),(26,'T-0005','US123','MX456','HHD','CVB','2019','Blue','O-0001','Jose M','D-0002','Mike M','REG123','RFID456','','2020-07-09 10:26:38','2020-07-09 17:26:38'),(35,'t-0001','1','1','1','1','1','1','1','1','11','1','1','1','2020-08-11','2020-08-11 16:26:37','2020-08-11 23:26:37'),(36,'t-0002','1','1','1','1','1','1','1','1','11','1','1','1','2020-08-11','2020-08-11 16:26:59','2020-08-11 23:26:59'),(37,'t-0001','2','2','2','2','2','2','1','2','2','2','2','2','2020-02-11','2020-08-11 16:48:38','2020-08-11 23:48:38'),(38,'T-0001','951','951','951','951','951','951','999','Dave','D-0001','Kevin K','951','951','2020-08-13','2020-08-13 14:48:05','2020-08-13 21:48:05');
 /*!40000 ALTER TABLE `information_truck_db` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-05 15:24:20
+-- Dump completed on 2020-08-31 10:41:15
